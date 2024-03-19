@@ -65,6 +65,11 @@ createApp({
             }
             // Vedo cosa ottengo
             console.log(this.myEmailListBonus);
+            // Posso usare tutto con then?
+            this.myEmailListBonus.then((response)=>{
+                //this.myEmailListBonus.then is not a function
+                console.log(response);
+            })
 
         }
 
