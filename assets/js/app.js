@@ -50,6 +50,13 @@ createApp({
                 )
         },
 
+        // Genera una lista di n mail 
+        generateMailList(n){
+            for (let i = 0; i <n; i++) {
+                this.callApiRandomEmail();  
+            }
+        }
+
 
 
     },
@@ -59,10 +66,13 @@ createApp({
         this.callApiRandomSentence();
         this.callApiRandomInt();
 
-        //Genero una mail random per 10 volte
-        for (let i = 0; i < 10; i++) {
+        // Commento per fare il bonus 
+        // Genero una mail random per 10 volte
+/*         for (let i = 0; i < 10; i++) {
             this.callApiRandomEmail();
-        }
+        } */
+
+        this.generateMailList(10);
 
     }
 
