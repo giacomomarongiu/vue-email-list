@@ -97,9 +97,13 @@ createApp({
                     console.log(element); //Eccoli!
                     console.log(element.data); //Eccoli!
                     console.log(element.data.response); //Eccoli!
-                    this.myEmailListBonus= [...element.data.response]
+                    this.myEmailListBonus.push(element.data.response) 
+
                 });
+                //Verifico 
+                console.log(this.myEmailListBonus); //Eccola!
             })
+            
         }
 
 
@@ -119,7 +123,7 @@ createApp({
 
         this.generateMailList(10);
 
-        //Try with bonus
+        //Bonus List - Printed all in one time
         this.generateMailListBonus();
 
     }

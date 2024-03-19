@@ -17,8 +17,14 @@
 
 <!--Email List-->
 <p>Stampo una lista di 10 email:</p>
+<!--Stampa una mail alla volta-->
 <ul>
     <li v-for="(mail,index) in myEmailList">{{mail}}</li>
+</ul>
+
+<!--Stampa la lista tutta in una volta-->
+<ul>
+    <li v-for="mail in myEmailListBonus">{{mail}}</li>
 </ul>
 </div>
 
