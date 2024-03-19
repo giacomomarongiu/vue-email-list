@@ -14,8 +14,12 @@
 <h1>API Tests</h1>
 <p>Stampo la stringa random: {{randomSentence}}</p><br>
 <p>Stampo l'intero random: {{randomNumber}}</p><br>
+
+<!--Email List-->
 <p>Stampo una lista di 10 email:</p>
-<ul></ul>
+<ul>
+    <li v-for="(mail,index) in myEmailList">{{mail}}</li>
+</ul>
 </div>
 
 
