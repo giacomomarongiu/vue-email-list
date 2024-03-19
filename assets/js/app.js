@@ -7,6 +7,7 @@ createApp({
             randomSentence: null,
             randomNumber: null,
             myEmailList: [],
+            myPromiseList: [],
             myEmailListBonus: []
         }
     },
@@ -61,23 +62,43 @@ createApp({
         // Genera una lista di n email
         generateMailListBonus() {
             for (let i = 0; i < 10; i++) {
-                this.myEmailListBonus.push(axios.get('https://flynn.boolean.careers/exercises/api/random/mail'));
+                this.myPromiseList.push(axios.get('https://flynn.boolean.careers/exercises/api/random/mail'));
             }
             // Vedo cosa ottengo
-            console.log(this.myEmailListBonus);
+            console.log(this.myPromiseList);
             // Posso usare tutto con then?
-            /*             this.myEmailListBonus.then((response)=>{
-                            //this.myEmailListBonus.then is not a function
+            /*             this.myPromiseList.then((response)=>{
+                            //this.myPromiseList.then is not a function
                             console.log(response);
                         }) */
 
             // Promise.any
-            console.log(Promise.any(this.myEmailListBonus));
+            console.log(Promise.any(this.myPromiseList));
             // Promise {<pending>} NON ERRORE 
             // Posso usare then su tutto?
-            (Promise.any(this.myEmailListBonus)).then((response)=>{
+            (Promise.any(this.myPromiseList)).then((response) => {
                 //Cosa è?
                 console.log(response); // Una sola mail
+            })
+
+            // Promise.all
+            console.log(Promise.any(this.myPromiseList));
+            // Promise {<pending>} NON ERRORE 
+            // Posso usare then su tutto?
+            (Promise.all(this.myPromiseList)).then((response) => {
+                //Cosa è?
+                console.log(); // ECCOLOOOOOOOOOOOOOOOO
+                console.log(response.data); // Undefined
+                //console.log(response.data.response); //Uncaught
+                console.log(response[0].data); // E' un array, vedo il primo elemento
+                // Ho un array di oggetti il cui .data è la mail che mi interessa
+                //Faccio un tentativo con il foreach
+                response.forEach(element => {
+                    console.log(element); //Eccoli!
+                    console.log(element.data); //Eccoli!
+                    console.log(element.data.response); //Eccoli!
+                    this.myEmailListBonus= [...element.data.response]
+                });
             })
         }
 
