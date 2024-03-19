@@ -75,7 +75,10 @@ createApp({
             console.log(Promise.any(this.myEmailListBonus));
             // Promise {<pending>} NON ERRORE 
             // Posso usare then su tutto?
-
+            (Promise.any(this.myEmailListBonus)).then((response)=>{
+                //Cosa è?
+                console.log(response); // Una sola mail
+            })
         }
 
 
