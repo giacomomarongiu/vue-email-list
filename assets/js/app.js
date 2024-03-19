@@ -7,6 +7,7 @@ createApp({
             randomSentence: null,
             randomNumber: null,
             myEmailList: [],
+            myEmailListBonus: []
         }
     },
 
@@ -51,10 +52,20 @@ createApp({
         },
 
         // Genera una lista di n mail 
-        generateMailList(n){
-            for (let i = 0; i <n; i++) {
-                this.callApiRandomEmail();  
+        generateMailList(n) {
+            for (let i = 0; i < n; i++) {
+                this.callApiRandomEmail();
             }
+        },
+
+        // Genera una lista di n email
+        generateMailListBonus() {
+            for (let i = 0; i < 10; i++) {
+                this.myEmailListBonus.push(axios.get('https://flynn.boolean.careers/exercises/api/random/mail'));
+            }
+            // Vedo cosa ottengo
+            console.log(this.myEmailListBonus);
+
         }
 
 
@@ -62,19 +73,22 @@ createApp({
     },
 
 
-    mounted() {
-        this.callApiRandomSentence();
-        this.callApiRandomInt();
+mounted() {
+    this.callApiRandomSentence();
+    this.callApiRandomInt();
 
-        // Commento per fare il bonus 
-        // Genero una mail random per 10 volte
-/*         for (let i = 0; i < 10; i++) {
-            this.callApiRandomEmail();
-        } */
+    // Commento per fare il bonus 
+    // Genero una mail random per 10 volte
+    /*         for (let i = 0; i < 10; i++) {
+                this.callApiRandomEmail();
+            } */
 
-        this.generateMailList(10);
+    this.generateMailList(10);
 
-    }
+    //Try with bonus
+    this.generateMailListBonus();
+
+}
 
 
 }).mount('#app')
