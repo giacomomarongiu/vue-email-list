@@ -17,10 +17,10 @@ createApp({
             axios
                 .get('https://flynn.boolean.careers/exercises/api/random/sentence')
                 .then((response) => {
-                    console.log(response);
-                    console.log(response.data);
+                    //console.log(response);
+                    //console.log(response.data);
                     this.randomSentence = response.data.response
-                    console.log(this.randomSentence);
+                    //console.log(this.randomSentence);
                 }
                 )
         },
@@ -30,10 +30,10 @@ createApp({
             axios
                 .get('https://flynn.boolean.careers/exercises/api/random/int')
                 .then((response) => {
-                    console.log(response);
-                    console.log(response.data);
+                    //console.log(response);
+                    //console.log(response.data);
                     this.randomNumber = response.data.response
-                    console.log(this.randomNumber);
+                    //console.log(this.randomNumber);
                 }
                 )
         },
@@ -43,10 +43,10 @@ createApp({
             axios.
                 get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then((response) => {
-                    console.log(response);
-                    console.log(response.data);
+                    //console.log(response);
+                    //console.log(response.data);
                     this.myEmailList.push(response.data.response)
-                    console.log(this.myEmailList);
+                    //console.log(this.myEmailList);
                 }
                 )
         },
@@ -66,10 +66,15 @@ createApp({
             // Vedo cosa ottengo
             console.log(this.myEmailListBonus);
             // Posso usare tutto con then?
-            this.myEmailListBonus.then((response)=>{
-                //this.myEmailListBonus.then is not a function
-                console.log(response);
-            })
+            /*             this.myEmailListBonus.then((response)=>{
+                            //this.myEmailListBonus.then is not a function
+                            console.log(response);
+                        }) */
+
+            // Promise.any
+            console.log(Promise.any(this.myEmailListBonus));
+            // Promise {<pending>} NON ERRORE 
+            // Posso usare then su tutto?
 
         }
 
@@ -78,22 +83,22 @@ createApp({
     },
 
 
-mounted() {
-    this.callApiRandomSentence();
-    this.callApiRandomInt();
+    mounted() {
+        this.callApiRandomSentence();
+        this.callApiRandomInt();
 
-    // Commento per fare il bonus 
-    // Genero una mail random per 10 volte
-    /*         for (let i = 0; i < 10; i++) {
-                this.callApiRandomEmail();
-            } */
+        // Commento per fare il bonus 
+        // Genero una mail random per 10 volte
+        /*         for (let i = 0; i < 10; i++) {
+                    this.callApiRandomEmail();
+                } */
 
-    this.generateMailList(10);
+        this.generateMailList(10);
 
-    //Try with bonus
-    this.generateMailListBonus();
+        //Try with bonus
+        this.generateMailListBonus();
 
-}
+    }
 
 
 }).mount('#app')
